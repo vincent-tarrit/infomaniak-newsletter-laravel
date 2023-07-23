@@ -84,7 +84,8 @@ class Campaign extends Model
     {
         $this->save();
         $newsLetter = app(Newsletter::class);
-        $newsLetter->client->post(Client::CAMPAIGN . '/' . $this->id . '/send');
+        $response = $newsLetter->client->post(Client::CAMPAIGN . '/' . $this->id . '/send');
+        dd($response);
         return $this;
     }
 
