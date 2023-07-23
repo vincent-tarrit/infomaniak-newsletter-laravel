@@ -3,8 +3,7 @@
 namespace Vincenttarrit\Newsletter;
 
 
-use Illuminate\Support\Facades\App;
-use Infomaniak\ClientApiNewsletter\Client;
+use Vincenttarrit\Newsletter\API\Client;
 use Vincenttarrit\Newsletter\Services\CampaignService;
 
 class Newsletter
