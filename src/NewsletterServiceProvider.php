@@ -4,7 +4,6 @@ namespace Vincenttarrit\Newsletter;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Vincenttarrit\Newsletter\Commands\NewsletterCommand;
 
 class NewsletterServiceProvider extends PackageServiceProvider
 {

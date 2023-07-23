@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.7",
         "illuminate/contracts": "^10.0",
         "infomaniak/client-api-newsletter": "dev-master",
         "spatie/laravel-package-tools": "^1.14.0"
