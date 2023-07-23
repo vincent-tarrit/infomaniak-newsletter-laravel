@@ -5,6 +5,6 @@ namespace Vincenttarrit\Newsletter\Models;
 class Model {
 
     public function save() {
-        dd($this);
+        dd(get_class($this));
     }
 }
