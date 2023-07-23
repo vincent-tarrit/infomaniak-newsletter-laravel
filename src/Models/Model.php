@@ -9,9 +9,9 @@ class Model {
 
     public function save() {
         if($this->id) {
-            $this->update();
+           return $this->update();
         } else {
-            $this->create();
+            return $this->create();
         }
     }
 
@@ -21,7 +21,8 @@ class Model {
     }
 
     public function update() {
-
+        $newsLetter = app(Newsletter::class);
+        return $newsLetter->client->put($this->endpoint . '/' . $this->id, $this->toArray());
     }
 
     public function toArray(): array
