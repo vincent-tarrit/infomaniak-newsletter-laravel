@@ -4,13 +4,17 @@ namespace Vincenttarrit\Newsletter\Models;
 
 class Campaign extends Model
 {
+    static $endpoint = 'campaigns';
     public string $subject;
     public string $content;
 
     public array $groupIds = [];
 
-    public function __construct()
+    public Domain $domain;
+
+    public function __construct(Domain $domain)
     {
+        $this->domain = $domain;
     }
 
     public function subject(string $subject): static
