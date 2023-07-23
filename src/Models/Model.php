@@ -21,8 +21,8 @@ class Model {
             'params' => $this->toArray()
         ]);
 
-        if($response->success() === false) {
-            throw new \Exception('Error while creating campaign');
+        if($response->errors()) {
+            throw new \Exception($response->reason());
         }
         $this->id = $response->datas()['id'];
         return $this;
