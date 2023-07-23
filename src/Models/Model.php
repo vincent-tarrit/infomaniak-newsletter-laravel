@@ -5,6 +5,7 @@ namespace Vincenttarrit\Newsletter\Models;
 use Vincenttarrit\Newsletter\API\Client;
 
 class Model {
+    public int $id;
 
     public function save() {
         if($this->id) {
@@ -22,5 +23,10 @@ class Model {
 
     public function update() {
 
+    }
+
+    public function toArray(): array
+    {
+        return get_object_vars($this);
     }
 }
