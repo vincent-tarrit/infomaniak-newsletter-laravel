@@ -17,8 +17,10 @@
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "guzzlehttp/guzzle": "^7.7",
+        "illuminate/contracts": "^10.0",
+        "infomaniak/client-api-newsletter": "dev-master",
+        "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -28,6 +30,12 @@
         "pestphp/pest-plugin-arch": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0"
     },
+    "repositories": [
+        {
+            "url": "https://github.com/vincent-tarrit/infomaniak-newsletter-api-client",
+            "type": "vcs"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Vincenttarrit\\Newsletter\\": "src/",
