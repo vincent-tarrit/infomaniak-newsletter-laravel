@@ -2,7 +2,7 @@
 
 namespace Vincenttarrit\Newsletter\Models;
 
-class Subscriber
+class Subscriber extends Model
 {
     public function __construct()
     {
