@@ -18,6 +18,12 @@ class Campaign extends Model
         $this->domain = $domain;
     }
 
+    public function id(?int $id): static
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function subject(string $subject): static
     {
         $this->subject = $subject;

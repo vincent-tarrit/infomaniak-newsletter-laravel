@@ -9,6 +9,8 @@ class CampaignService {
     public function make(?string $domainId = null) : Campaign
     {
         $domain = Domain::from($domainId ?? config('infomaniak-newsletter.default_domain_id'));
-        return new Campaign($domain);
+        $campaign = new Campaign($domain);
+        $campaign->id(null);
+        return $campaign;
     }
 }
