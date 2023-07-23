@@ -4,7 +4,7 @@ namespace Vincenttarrit\Newsletter\Models;
 
 class Campaign extends Model
 {
-    public string $endpoint = 'campaigns';
+    public string $endpoint = 'campaign';
     public ?int $id;
     public string $subject;
     public string $content;
