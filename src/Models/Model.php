@@ -3,8 +3,10 @@
 namespace Vincenttarrit\Newsletter\Models;
 
 use Vincenttarrit\Newsletter\API\Client;
+use Vincenttarrit\Newsletter\Newsletter;
 
 class Model {
+
     public function save() {
         if($this->id) {
             $this->update();
@@ -14,9 +16,8 @@ class Model {
     }
 
     public function create() {
-
-        dd($this->toArray(), $this->endpoint);
-        $this->client->post($this->endpoint, $this->toArray());
+        $newsLetter = app(Newsletter::class);
+        $newsLetter->client->post($this->endpoint, $this->toArray());
     }
 
     public function update() {

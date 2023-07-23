@@ -8,7 +8,7 @@ use Vincenttarrit\Newsletter\Services\CampaignService;
 
 class Newsletter
 {
-    private $client;
+    readonly public Client $client;
 
     public function __construct()
     {
