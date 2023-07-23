@@ -16,6 +16,6 @@ class NewsletterServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('infomaniak-newsletter-laravel')
-            ->hasConfigFile();
+            ->hasConfigFile('infomaniak-newsletter');
     }
 }
