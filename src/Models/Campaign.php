@@ -13,6 +13,10 @@ class Campaign extends Model
 
     public array $groupIds = [];
 
+    public string $email_from_name = '';
+    public string $email_from_addr = '';
+    public string $lang = 'fr';
+
     public Domain $domain;
 
     public function __construct(Domain $domain, ?int $id = null)
@@ -43,5 +47,35 @@ class Campaign extends Model
     {
         $this->groupIds = $groupIds;
         return $this;
+    }
+
+    public function emailFromName(string $email_from_name): static
+    {
+        $this->email_from_name = $email_from_name;
+        return $this;
+    }
+
+    public function emailFromAddr(string $email_from_addr): static
+    {
+        $this->email_from_addr = $email_from_addr;
+        return $this;
+    }
+
+    public function lang(string $lang): static
+    {
+        $this->lang = $lang;
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'subject' => $this->subject,
+            'content' => $this->content,
+            'email_from_name' => $this->email_from_name,
+            'email_from_addr' => $this->email_from_addr,
+            'lang' => $this->lang,
+            'mailinglistIds' => $this->groupIds,
+        ];
     }
 }

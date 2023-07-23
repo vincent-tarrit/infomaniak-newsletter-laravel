@@ -26,9 +26,4 @@ class Model {
         $newsLetter = app(Newsletter::class);
         return $newsLetter->client->put($this->endpoint . '/' . $this->id, $this->toArray());
     }
-
-    public function toArray(): array
-    {
-        return get_object_vars($this);
-    }
 }
