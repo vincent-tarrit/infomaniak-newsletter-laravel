@@ -15,13 +15,6 @@ You can install the package via composer:
 composer require vincent-tarrit/infomaniak-newsletter-laravel
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="infomaniak-newsletter-laravel-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
@@ -32,20 +25,25 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'default_domain_id' => env('INFOMANIAK_NEWSLETTER_DEFAULT_DOMAIN_ID'),
+    'client' => env('INFOMANIAK_NEWSLETTER_CLIENT'),
+    'secret' => env('INFOMANIAK_NEWSLETTER_SECRET'),
+    'test_email' => env('INFOMANIAK_NEWSLETTER_TEST_EMAIL'),
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="infomaniak-newsletter-laravel-views"
 ```
 
 ## Usage
 
 ```php
-$newsletter = new Vincenttarrit\Newsletter();
-echo $newsletter->echoPhrase('Hello, Vincenttarrit!');
+$campaign = Newsletter::campaigns()
+  ->make()
+  ->subject("test")
+  ->content("test")
+  ->emailFromName('NAME')
+  ->emailFromAddr('username')
+  ->lang('fr')
+  ->groups([123456])
+  ->send();
 ```
 
 ## Testing
