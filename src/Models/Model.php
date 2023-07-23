@@ -15,8 +15,8 @@ class Model {
 
     public function create() {
 
-        dd($this->toArray(), self::$endpoint);
-        $this->client->post(self::$endpoint, $this->toArray());
+        dd($this->toArray(), $this->endpoint);
+        $this->client->post($this->endpoint, $this->toArray());
     }
 
     public function update() {
