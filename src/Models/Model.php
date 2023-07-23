@@ -7,7 +7,7 @@ use Vincenttarrit\Newsletter\Newsletter;
 
 class Model {
 
-    public function save() {
+    public function save() : Campaign {
         if($this->id) {
            return $this->update();
         } else {
@@ -17,9 +17,15 @@ class Model {
 
     public function create() {
         $newsLetter = app(Newsletter::class);
-        return $newsLetter->client->post($this->endpoint,[
+        $response = $newsLetter->client->post($this->endpoint,[
             'params' => $this->toArray()
         ]);
+
+        if($response->success() === false) {
+            throw new \Exception('Error while creating campaign');
+        }
+        $this->id = $response->datas()->id;
+        return $this;
     }
 
     public function update() {
