@@ -5,8 +5,6 @@ namespace Vincenttarrit\Newsletter\Models;
 use Vincenttarrit\Newsletter\API\Client;
 
 class Model {
-    public ?int $id;
-
     public function save() {
         if($this->id) {
             $this->update();
