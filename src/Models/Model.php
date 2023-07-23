@@ -17,7 +17,7 @@ class Model {
 
     public function create() {
         $newsLetter = app(Newsletter::class);
-        $newsLetter->client->post($this->endpoint, $this->toArray());
+        return $newsLetter->client->post($this->endpoint, $this->toArray());
     }
 
     public function update() {
