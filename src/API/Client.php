@@ -2,6 +2,8 @@
 
 namespace Vincenttarrit\Newsletter\API;
 
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\RequestOptions;
 
 /**
@@ -55,10 +57,7 @@ class Client {
         try {
             $response = $this->client->request($method, $uri, $options);
         }
-        catch (ClientException $e) {
-            $response = $e->getResponse();
-        }
-        catch (ServerException $e) {
+        catch (ClientException|ServerException $e) {
             $response = $e->getResponse();
         }
 
@@ -71,7 +70,7 @@ class Client {
      * @param array $args
      * @return mixed
      */
-    private function _buildURL($resource, $args=[])
+    private function _buildURL($resource, $args=[]): mixed
     {
         $args = array_merge(
             [
@@ -98,7 +97,7 @@ class Client {
      * @param array $args
      * @return Response
      */
-    public function get($resource, $args=[])
+    public function get($resource, $args=[]): Response
     {
         return $this->_request('GET', $resource, $args);
     }
@@ -109,7 +108,7 @@ class Client {
      * @param array $args
      * @return Response
      */
-    public function post($resource, $args=[])
+    public function post($resource, $args=[]): Response
     {
         return $this->_request('POST', $resource, $args);
     }
@@ -120,7 +119,7 @@ class Client {
      * @param array $args
      * @return Response
      */
-    public function put($resource, $args=[])
+    public function put($resource, $args=[]): Response
     {
         return $this->_request('PUT', $resource, $args);
     }
@@ -131,7 +130,7 @@ class Client {
      * @param array $args
      * @return Response
      */
-    public function delete($resource, $args=[])
+    public function delete($resource, $args=[]): Response
     {
         return $this->_request('DELETE', $resource, $args);
     }
@@ -140,7 +139,7 @@ class Client {
      * Perform a PING request to server.
      * @return Response
      */
-    public function ping()
+    public function ping(): Response
     {
         return $this->get('ping');
     }

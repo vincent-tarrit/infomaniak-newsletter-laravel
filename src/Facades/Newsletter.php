@@ -12,7 +12,7 @@ class Newsletter extends Facade
 {
     public static function campaigns(): CampaignService
     {
-        return static::getFacadeRoot()->campaigns;
+        return static::getFacadeRoot()->campaigns();
     }
     protected static function getFacadeAccessor()
     {
