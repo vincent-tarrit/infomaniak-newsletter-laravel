@@ -2,9 +2,11 @@
 
 namespace Vincenttarrit\Newsletter\Models;
 
+use Vincenttarrit\Newsletter\API\Client;
+
 class Campaign extends Model
 {
-    public string $endpoint = 'campaign';
+    public string $endpoint = Client::CAMPAIGN;
     public ?int $id;
     public string $subject;
     public string $content;
@@ -13,9 +15,10 @@ class Campaign extends Model
 
     public Domain $domain;
 
-    public function __construct(Domain $domain)
+    public function __construct(Domain $domain, ?int $id = null)
     {
         $this->domain = $domain;
+        $this->id = $id;
     }
 
     public function id(?int $id): static
