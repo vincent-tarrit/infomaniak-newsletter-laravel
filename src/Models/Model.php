@@ -24,7 +24,7 @@ class Model {
         if($response->success() === false) {
             throw new \Exception('Error while creating campaign');
         }
-        $this->id = $response->datas()->id;
+        $this->id = $response->datas()['id'];
         return $this;
     }
 
