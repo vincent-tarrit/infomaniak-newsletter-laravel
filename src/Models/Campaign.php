@@ -3,6 +3,7 @@
 namespace Vincenttarrit\Newsletter\Models;
 
 use Vincenttarrit\Newsletter\API\Client;
+use Vincenttarrit\Newsletter\Newsletter;
 
 class Campaign extends Model
 {
@@ -77,5 +78,25 @@ class Campaign extends Model
             'lang' => $this->lang,
             'mailinglistIds' => $this->groupIds,
         ];
+    }
+
+    public function send(): static
+    {
+        $this->save();
+        $newsLetter = app(Newsletter::class);
+        $newsLetter->client->post(Client::CAMPAIGN . '/' . $this->id . '/send');
+        return $this;
+    }
+
+    public function test(?string $email): static
+    {
+        $this->save();
+        $newsLetter = app(Newsletter::class);
+        $newsLetter->client->post(Client::CAMPAIGN . '/' . $this->id . '/test', [
+            'params' => [
+                'email' => $email ?? config('infomaniak-newsletter.test_email'),
+            ],
+        ]);
+        return $this;
     }
 }
