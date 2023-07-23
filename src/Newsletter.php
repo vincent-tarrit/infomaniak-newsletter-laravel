@@ -12,7 +12,7 @@ class Newsletter
 
     public function __construct()
     {
-        $this->client = new Client(config('newsletter.client'), config('newsletter.secret'));
+        $this->client = new Client(config('infomaniak-newsletter.client'), config('infomaniak-newsletter.secret'));
     }
 
     public function campaigns(): CampaignService
